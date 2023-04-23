@@ -1,0 +1,9 @@
+venv/
+.idea/
+__pycache__/
+app.db
+migrations/
+dz_11_09.py
+dz_30_10.py
+lesson_04_09.py
+task.py

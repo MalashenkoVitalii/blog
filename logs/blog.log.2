@@ -1,0 +1,149 @@
+
+2023-04-09 11:05:15,592 INFO: Blog startUP! [in D:\blog\app\__init__.py:27]
+2023-04-09 11:08:38,649 ERROR: Exception on /edit_profile [POST] [in d:\blog\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\blog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\blog\app\route.py", line 91, in edit_profile
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3386, in flush
+    self._flush(objects)
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3526, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 208, in raise_
+    raise exception
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3486, in _flush
+    flush_context.execute()
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 237, in save_obj
+    _emit_update_statements(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1001, in _emit_update_statements
+    c = connection._execute_20(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 208, in raise_
+    raise exception
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "d:\blog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('Fuhrer', "I am 14 yo, I'm ok", 2)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2023-04-09 11:11:39,331 ERROR: Exception on /login [POST] [in d:\blog\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\blog\app\route.py", line 44, in login
+    return redirect(url_for(next_page))
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 336, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 323, in url_for
+    rv = url_adapter.build(
+  File "d:\blog\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint '/index'. Did you mean 'index' instead?
+2023-04-09 11:25:06,234 INFO: Blog startUP! [in D:\blog\app\__init__.py:27]
+2023-04-09 11:25:29,734 ERROR: Exception on /login [POST] [in d:\blog\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\blog\app\route.py", line 44, in login
+    return redirect(url_for(next_page))
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 336, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 323, in url_for
+    rv = url_adapter.build(
+  File "d:\blog\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint '/index'. Did you mean 'index' instead?
+2023-04-09 12:05:12,786 INFO: Blog startUP! [in D:\blog\app\__init__.py:27]
+2023-04-09 12:05:18,402 ERROR: Exception on /edit_profile [GET] [in d:\blog\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\blog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\blog\app\route.py", line 87, in edit_profile
+    form = EditProfileForm()
+  File "d:\blog\venv\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'original_username'
+2023-04-09 12:10:15,588 INFO: Blog startUP! [in D:\blog\app\__init__.py:27]
+2023-04-09 12:10:52,759 ERROR: Exception on /edit_profile [POST] [in d:\blog\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\blog\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\blog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\blog\app\route.py", line 93, in edit_profile
+    return redirect(url_for('edit profile'))
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 336, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\blog\venv\lib\site-packages\flask\helpers.py", line 323, in url_for
+    rv = url_adapter.build(
+  File "d:\blog\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit profile'. Did you mean 'edit_profile' instead?
