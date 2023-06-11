@@ -3,3 +3,9 @@ User.query.get()
 User.query.all()
 lsof -i tcp:5000
 kill -9
+
+cd venv/Scripts/
+activate.bat
+flask db init
+flask db migrate -m "all table"
+flask db upgrade

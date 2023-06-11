@@ -10,7 +10,7 @@ text-decoration: none;
 }
 
 .wrapper {
-border: 5px dashed red;
+border: 5px solid red;
 width: 400px;
 margin: 0 auto;
 background-color:rgba(144, 26, 223, 0.4)
@@ -41,7 +41,7 @@ margin:0;
 }
 
 a {
-color: yellow;
+color: lime;
 text-decoration: none;
 font-size:20px;
 }
@@ -52,5 +52,9 @@ background-repeat: no-repeat;
 background-size:cover;
 min-height:100vh;
 color:green;
+}
+
+ul {
+list-style-type: none;
 }
 
